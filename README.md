@@ -1,2 +1,2 @@
-# TS-Express-Boilerplate
-This is my boilerplate repository for a TypeScript Express application.
+# Confessions of a Lovergirl
+This is the promotional website for Rachel Bochner's Lovergirl EP.
