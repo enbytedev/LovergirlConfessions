@@ -1,0 +1,6 @@
+.env
+public/
+node_modules/
+dist/
+logs/
+
