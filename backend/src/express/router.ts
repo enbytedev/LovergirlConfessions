@@ -9,6 +9,10 @@ const router = Router();
 export const setRoutes = (app: Express) => {
     logger.debug(`Configuring Express routing...`, "ExpressJS Setup")
 
+    // Confessions routes
+    router.get("/confessions", browserRateLimit, Routes.confession.getConfessions);
+    router.put("/confessions", browserRateLimit, Routes.confession.addConfession);
+        
     router.get("/", browserRateLimit, Routes.basic.home);
     router.get("*", browserRateLimit, Routes.basic.notFound);
     app.use(router);
