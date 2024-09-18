@@ -14,7 +14,7 @@ class setupDatabase {
                 connection.schema.createTable('Confessions', (table) => {
                     table.increments('confessionId').primary();
                     table.timestamp('timestamp').defaultTo(connection.fn.now());
-                    table.string('sender');
+                    table.string('recipient');
                     table.text('message');
                 }).then(() => {
                     logger.log('Created Confessions table', 'Database @ Setup Database');

@@ -38,14 +38,14 @@ class ConfessionsDatabase {
      * Add a confession to the database.
      * Automatically inserts the current timestamp.
      */
-    public addConfession = async (sender: string, message: string): Promise<void> => {
+    public addConfession = async (recipient: string, message: string): Promise<void> => {
         try {
             await connection('Confessions').insert({
-                sender,
+                recipient,
                 message,
                 timestamp: connection.fn.now() // Automatically inserts current timestamp
             });
-            logger.info(`Added confession from ${sender}`, 'Database @ Confessions');
+            logger.debug(`Added confession from ${recipient}`, 'Database @ Confessions');
         } catch (err) {
             logger.error("Error adding confession: " + err, "Database @ Confessions");
             throw err;
@@ -53,19 +53,22 @@ class ConfessionsDatabase {
     };
 
     /**
-     * Get the last 100 confessions from the database.
+     * Get paginated confessions from the database.
+     * Fetches confessions based on the provided limit and offset.
      */
-    public getLast100Confessions = async (): Promise<any[]> => {
+    public getPaginatedConfessions = async (limit: number, offset: number): Promise<any[]> => {
         try {
             return await connection('Confessions')
-                .select('confessionId', 'sender', 'message', 'timestamp')
+                .select('confessionId', 'recipient', 'message', 'timestamp')
                 .orderBy('timestamp', 'desc')
-                .limit(100);
+                .limit(limit)
+                .offset(offset); // Fetch confessions based on limit and offset for pagination
         } catch (err) {
-            logger.error("Error fetching the last 100 confessions: " + err, "Database @ Confessions");
+            logger.error("Error fetching paginated confessions: " + err, "Database @ Confessions");
             throw err;
         }
     };
+
 }
 
 export default new ConfessionsDatabase();
