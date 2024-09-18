@@ -7,113 +7,113 @@
 }
 
 .App-header {
-  background-color: #282c34; /* Dark header */
-  padding: 20px;
+  background-color: #282c34;
+  padding: 10px;
   color: white;
-}
-
-.confession-list {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.App-logo {
+  height: 10em;
+  margin-bottom: 20px;
+}
+
+.confession-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;
   padding: 20px;
   width: 90%;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
+@media (max-width: 1200px) {
+  .confession-list {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+  }
+}
+
+@media (max-width: 800px) {
+  .confession-list {
+    grid-template-columns: 1fr; /* 1 column on very small screens */
+  }
+}
+
 .confession-box {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 20px;
-  background-repeat: repeat-y; /* Repeat the image vertically like lined paper */
-  background-size: cover; /* Make sure the image scales to fit the box */
-  border-radius: 15px;
   position: relative;
+  padding: 20px 30px; /* Extra padding for the red line */
+  background-color: #f9f9f9;
+  border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  min-height: 200px;
+
+  /* Blue lines and red vertical line */
+  background-image:
+    linear-gradient(to bottom, rgba(173, 216, 230, 1) 1px, transparent 24px), /* Blue lines */
+    linear-gradient(to right, #ff0000 2px, transparent 2px); /* Red vertical line */
+  background-size: 100% 25px, 40px 100%; /* Blue line spacing and red line position */
+  background-repeat: repeat-y, no-repeat;
+  background-position: 40px 0px, 0 0px; /* Adjust positioning of red line and blue lines */
 }
 
-.lined-paper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 20px;
-  right: 20px;
-  background-image: linear-gradient(transparent 24px, rgba(0, 0, 0, 0.1) 25px); /* Lined paper effect */
-  background-size: 100% 25px;
-  z-index: -1;
-}
-
+/* Confession box header */
 .confession-header {
   display: flex;
-  justify-content: space-between; /* Aligns "To" on the left and timestamp on the right */
-  width: 100%;
-  margin-bottom: 10px;
+  justify-content: space-between;
   color: #333;
 }
 
-.confession-recipient {
-  font-weight: bold;
-  text-align: left; /* Align "To" on the left */
-}
-
-.confession-timestamp {
-  font-size: 12px;
-  color: #999;
-  text-align: right; /* Align timestamp on the right */
-}
-
-.divider {
-  width: 100%;
-  margin: 10px 0;
-  border-top: 1px solid #999; /* Divider line */
-}
-
+/* Confession body styling */
 .confession-body {
   text-align: left;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .confession-message {
-  font-size: 16px;
+  font-size: 18px;
   color: #333;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 .pagination {
   position: fixed;
-  bottom: 20px; /* Move it slightly above the bottom for visual appeal */
-  left: 50%; /* Center the pagination bar */
-  transform: translateX(-50%); /* Adjust to center it properly */
-  width: 200px; /* Set a fixed width */
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
   background-color: #131313;
   padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 20px; /* Rounds the corners */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Increased shadow for visibility */
-  z-index: 1000; /* Ensure it's always on top */
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.divider {
+  padding-top: 8px;
 }
 
 button {
-  background-color: #9676b8; /* Custom purple button */
+  background-color: #9676b8;
   color: #fff;
   border: none;
-  padding: 8px 16px; /* Reduced padding to make buttons smaller */
-  border-radius: 0px;
-  margin: 0px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
   cursor: pointer;
-  font-size: 14px; /* Slightly smaller font for smaller buttons */
 }
 
 button:disabled {
-  background-color: #555555; /* Darker background for disabled state */
-  color: #999999; /* Lighter text for disabled button */
+  background-color: #555555;
+  color: #999999;
   cursor: not-allowed;
 }
 
 button:hover:not(:disabled) {
-  background-color: #c0a9e6; /* Lighter purple on hover */
+  background-color: #c0a9e6;
 }

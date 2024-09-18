@@ -95,12 +95,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Confessions</h1>
-        <Button
-        color = 'secondary'
-        variant = 'contained'
-          onClick={handleClickOpen}
-        >
+        <img src={`${process.env.PUBLIC_URL}/banner.png`} alt="Logo" className="App-logo" />
+        <h2>placeholder promo text</h2>
+        <Button color="secondary" variant="contained" onClick={handleClickOpen}>
           Leave a Confession
         </Button>
       </header>
@@ -165,7 +162,7 @@ function App() {
                 {new Date(confession.timestamp).toLocaleString()}
               </Typography>
             </div>
-            <Divider variant="middle" className="divider" />
+            <Divider variant="middle" className="divider"/>
             <div className="confession-body">
               <Typography variant="body1" className="confession-message">
                 {confession.message}
