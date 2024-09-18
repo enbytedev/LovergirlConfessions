@@ -4,25 +4,70 @@
   background-color: #1e1e1e;
   color: #f0f0f0;
   min-height: 100vh;
+  padding-bottom: 30px;
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 10px;
+  background-color: #1e1e1e;
+  padding: 40px 20px;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #d6bbf2;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 .App-logo {
-  height: 10em;
+  height: 150px;
   margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(214, 187, 242, 0.7));
+}
+
+.promo-text {
+  max-width: 800px;
+  margin-bottom: 20px;
+}
+
+.promo-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.highlight {
+  color: #d6bbf2;
+}
+
+.italic {
+  font-style: italic;
+  color: #f76092;
+}
+
+.promo-description {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.1rem;
+  color: #d6bbf2;
+  margin-bottom: 20px;
+}
+
+.presave-link {
+  color: #f76092;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.presave-link:hover {
+  text-decoration: underline;
 }
 
 .confession-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding: 20px;
   width: 90%;
@@ -32,41 +77,30 @@
 
 @media (max-width: 1200px) {
   .confession-list {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 800px) {
   .confession-list {
-    grid-template-columns: 1fr; /* 1 column on very small screens */
+    grid-template-columns: 1fr;
   }
 }
 
 .confession-box {
-  position: relative;
-  padding: 20px 30px; /* Extra padding for the red line */
+  padding: 20px;
   background-color: #f9f9f9;
   border-radius: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   min-height: 200px;
-
-  /* Blue lines and red vertical line */
-  background-image:
-    linear-gradient(to bottom, rgba(173, 216, 230, 1) 1px, transparent 24px), /* Blue lines */
-    linear-gradient(to right, #ff0000 2px, transparent 2px); /* Red vertical line */
-  background-size: 100% 25px, 40px 100%; /* Blue line spacing and red line position */
-  background-repeat: repeat-y, no-repeat;
-  background-position: 40px 0px, 0 0px; /* Adjust positioning of red line and blue lines */
 }
 
-/* Confession box header */
 .confession-header {
   display: flex;
   justify-content: space-between;
   color: #333;
 }
 
-/* Confession body styling */
 .confession-body {
   text-align: left;
   margin-top: 20px;
@@ -78,6 +112,56 @@
   line-height: 1.7;
 }
 
+/* Countdown styling */
+.countdown-timer {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #ff4081;
+  text-align: right;
+}
+
+.countdown-timer ul {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.countdown-timer li {
+  font-size: 1.2em;
+  margin-right: 10px;
+  text-align: center;
+}
+
+.countdown-timer li span {
+  display: block;
+  font-size: 2.5rem;
+  color: #d6bbf2;  /* Updated number color */
+  line-height: 0.2;
+}
+
+.countdown-timer li {
+  color: #f76092;  /* Updated label color */
+}
+
+.countdown-timer .colon {
+  font-size: 3rem;
+  color: #fff;
+  padding-bottom: 30px;
+  margin: 10;
+}
+
+@media (max-width: 1200px) {
+  /* Move countdown under the button on smaller screens */
+  .countdown-timer {
+    position: static;
+    margin-top: 0px;
+  }
+}
+
+/* Pagination styling */
 .pagination {
   position: fixed;
   bottom: 20px;
@@ -94,8 +178,10 @@
   z-index: 1000;
 }
 
-.divider {
-  padding-top: 8px;
+.page-number {
+  color: white;
+  margin: 0 15px;
+  font-weight: bold;
 }
 
 button {
@@ -109,9 +195,19 @@ button {
 }
 
 button:disabled {
-  background-color: #555555;
   color: #999999;
+  background-color: transparent;
   cursor: not-allowed;
+}
+
+button.disabled-button {
+  color: #868686;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+button.disabled-button:hover {
+  background-color: transparent;
 }
 
 button:hover:not(:disabled) {

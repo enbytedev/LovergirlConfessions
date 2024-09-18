@@ -5,10 +5,10 @@ import confessionsDatabase from '../../database/databaseAccess.js';
 const filter = new Filter({ placeHolder: '❤️' }); // Replace profanity with heart emoji
 
 class ConfessionRoutes {
-    // GET: Fetch confessions with pagination (25 per page)
+    // GET: Fetch confessions with pagination
     async getConfessions(req: Request, res: Response) {
         const page = parseInt(req.params.page, 10) || 0; // Default to page 0 if not provided
-        const limit = 25;
+        const limit = 24;
         const offset = page * limit;
 
         try {
