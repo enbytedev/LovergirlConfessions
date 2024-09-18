@@ -27,7 +27,11 @@ class ConfessionRoutes {
         if (!recipient || !message) {
             return res.status(400).json({ error: 'Recipient and message are required' });
         }
-        
+
+        if (recipient.length > 20) {
+            return res.status(400).json({ error: 'Recipient exceeds 20 characters' });
+        }
+
         if (message.length > 150) {
         return res.status(400).json({ error: 'Message exceeds 150 characters' });
         }

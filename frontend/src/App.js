@@ -84,6 +84,11 @@ function App() {
       return;
     }
 
+    if (formData.recipient.length > 20) {
+      setSnackbar({ open: true, message: 'Recipient exceeds 20 characters.', severity: 'error' });
+      return;
+    }
+
     fetch(API_URL, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -168,6 +173,7 @@ function App() {
             variant="outlined"
             value={formData.recipient}
             onChange={handleChange}
+            inputProps={{ maxLength: 20 }}
           />
           <TextField
             color="secondary"
