@@ -1,16 +1,16 @@
 .App {
   text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: #1e1e1e;
-  color: #f0f0f0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+  color: #000000;
   min-height: 100vh;
-  padding-bottom: 30px;
+  padding-bottom: 70px;
 }
 
 .App-header {
-  background-color: #1e1e1e;
+  background-color: #fdecff;
   padding: 40px 20px;
-  color: white;
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,31 +32,31 @@
 }
 
 .promo-title {
-  font-family: 'Georgia', serif;
-  font-size: 1.5rem;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2rem;
   line-height: 1.6;
-  color: #fff;
+  color: #000;
   margin-bottom: 10px;
 }
 
 .highlight {
-  color: #d6bbf2;
+  color: #350066;
 }
 
 .italic {
   font-style: italic;
-  color: #f76092;
+  color: #8D314C;
 }
 
 .promo-description {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1.1rem;
-  color: #d6bbf2;
+  color: #350066;
   margin-bottom: 20px;
 }
 
 .presave-link {
-  color: #f76092;
+  color: #8D314C;
   text-decoration: none;
   font-weight: bold;
 }
@@ -117,7 +117,6 @@
   position: absolute;
   top: 10px;
   right: 20px;
-  color: #ff4081;
   text-align: right;
 }
 
@@ -138,17 +137,19 @@
 .countdown-timer li span {
   display: block;
   font-size: 2.5rem;
-  color: #d6bbf2;  /* Updated number color */
+  padding: 0 10px;
+  min-width: 70px;
+  color: #350066;
   line-height: 0.2;
 }
 
 .countdown-timer li {
-  color: #f76092;  /* Updated label color */
+  color: #8D314C;
 }
 
 .countdown-timer .colon {
   font-size: 3rem;
-  color: #fff;
+  color: #000000;
   padding-bottom: 30px;
   margin: 10;
 }
@@ -168,7 +169,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 250px;
-  background-color: #131313;
+  background-color: #faf3ff;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -179,7 +180,7 @@
 }
 
 .page-number {
-  color: white;
+  color: rgb(0, 0, 0);
   margin: 0 15px;
   font-weight: bold;
 }
@@ -212,4 +213,24 @@ button.disabled-button:hover {
 
 button:hover:not(:disabled) {
   background-color: #c0a9e6;
+}
+
+/* Footer styling */
+.App-footer {
+  margin-top: 40px;
+  padding: 10px;
+  font-size: 0.9rem;
+  background-color: #ffffff;
+  color: #000000;
+  text-align: center;
+  border-top: 3px solid #d6bbf2;
+}
+
+.App-footer a {
+  color: #8D314C;
+  text-decoration: none;
+}
+
+.App-footer a:hover {
+  text-decoration: underline;
 }

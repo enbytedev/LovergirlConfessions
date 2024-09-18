@@ -10,9 +10,21 @@ import DialogTitle from '@mui/material/DialogTitle';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
 
 const API_URL = 'http://localhost:8080/confessions';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#8D314C',
+    },
+    secondary: {
+      main: '#350066',
+    },
+  },
+});
 
 function App() {
   const [confessions, setConfessions] = useState([]);
@@ -40,7 +52,7 @@ function App() {
         };
         setTimeLeft(timeLeft);
       } else {
-        setCountdownOver(true); // Countdown is over, show streaming link
+        setCountdownOver(true);
       }
     };
 
@@ -122,147 +134,166 @@ function App() {
   const handlePrevPage = () => setPage(Math.max(page - 1, 0));
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {!countdownOver ? (
-          <div className="countdown-timer">
-            <ul>
-              <li><span>{timeLeft.days || '00'}</span><p>Days</p></li>
-              <li className="colon">:</li>
-              <li><span>{timeLeft.hours || '00'}</span><p>Hours</p></li>
-              <li className="colon">:</li>
-              <li><span>{timeLeft.minutes || '00'}</span><p>Minutes</p></li>
-              <li className="colon">:</li>
-              <li><span>{timeLeft.seconds || '00'}</span><p>Seconds</p></li>
-            </ul>
-          </div>
-        ) : null}
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <header className="App-header">
+          {!countdownOver ? (
+            <div className="countdown-timer">
+              <ul>
+                <li><span>{timeLeft.days || '00'}</span><p>Days</p></li>
+                <li className="colon">:</li>
+                <li><span>{timeLeft.hours || '00'}</span><p>Hours</p></li>
+                <li className="colon">:</li>
+                <li><span>{timeLeft.minutes || '00'}</span><p>Minutes</p></li>
+                <li className="colon">:</li>
+                <li><span>{timeLeft.seconds || '00'}</span><p>Seconds</p></li>
+              </ul>
+            </div>
+          ) : null}
 
-        <img src={`${process.env.PUBLIC_URL}/banner.png`} alt="Logo" className="App-logo" />
-        
-        <div className="promo-text">
-          <h2 className="promo-title">
-            Inspired by Rachel Bochner's EP, <span className="highlight">Lovergirl</span>, 
-            out everywhere October 11th. Confessions of a Lovergirl encourages you to say how 
-            you <span className="italic">really</span> feel.
-          </h2>
+          <img src={`${process.env.PUBLIC_URL}/banner.png`} alt="Logo" className="App-logo" />
           
-          <p className="promo-description">
-            To support Rachel, you can <a href="https://h-r.fans/rachel-lovergirl" className="presave-link">
-              {!countdownOver ? "presave the EP here" : "listen to the EP here"} 
-            </a>.
-          </p>
-        </div>
-        
-        <Button className="confession-button" color="secondary" variant="contained" onClick={handleClickOpen}>
-          Leave a Confession
-        </Button>
-      </header>
-
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Leave a Confession 🎭</DialogTitle>
-        <DialogContent sx={{ backgroundColor: '#f0f0f0' }}>
-          <TextField
-            color="secondary"
-            autoFocus
-            margin="dense"
-            id="recipient"
-            label="Recipient"
-            name="recipient"
-            fullWidth
-            variant="outlined"
-            value={formData.recipient}
-            onChange={handleChange}
-            inputProps={{ maxLength: 20 }}
-          />
-          <TextField
-            color="secondary"
-            margin="dense"
-            id="message"
-            label={`Confession (${formData.message.length}/150)`}
-            name="message"
-            fullWidth
-            multiline
-            rows={4}
-            variant="outlined"
-            value={formData.message}
-            onChange={handleChange}
-            inputProps={{ maxLength: 150 }}
-          />
-        </DialogContent>
-        <DialogActions sx={{ backgroundColor: '#f0f0f0' }}>
-          <Button onClick={handleClose} color="primary">Cancel</Button>
-          <Button onClick={handleSubmit} color="secondary" variant="contained">Submit</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Dialog open={thankYouDialogOpen} onClose={handleThankYouClose}>
-        <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Thank you for your confession ❤️</DialogTitle>
-        <DialogContent sx={{ backgroundColor: '#f0f0f0' }}>
-          <Typography>
-            Continue your Lovergirl Era by streaming <a href="https://h-r.fans/rachel-lovergirl">here</a>.
-          </Typography>
-        </DialogContent>
-        <DialogActions sx={{ backgroundColor: '#f0f0f0' }}>
-          <Button onClick={handleThankYouClose} color="secondary">Close</Button>
-        </DialogActions>
-      </Dialog>
-
-      <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={handleSnackbarClose}>
-        <Alert onClose={handleSnackbarClose} severity={snackbar.severity}>
-          {snackbar.message}
-        </Alert>
-      </Snackbar>
-
-      <div className="confession-list">
-        {confessions.map((confession, index) => (
-          <Paper
-            elevation={3}
-            className="confession-box"
-            key={index}
-            style={{ backgroundColor: '#f9f9f9' }}
-          >
-            <div className="confession-header">
-              <Typography className="confession-recipient" align="left">
-                To: {confession.recipient}
-              </Typography>
-              <Typography className="confession-timestamp" align="right">
-                {new Date(confession.timestamp).toLocaleString()}
-              </Typography>
-            </div>
-            <Divider variant="middle" className="divider" />
-            <div className="confession-body">
-              <Typography variant="body1" className="confession-message">
-                {confession.message}
-              </Typography>
-            </div>
-          </Paper>
-        ))}
-        <div className="pagination">
-          <Button
-            onClick={handlePrevPage}
-            color="secondary"
-            variant="text"
-            disabled={page === 0}
-            className={page === 0 ? "disabled-button" : ""}
-          >
-            Prev
+          <div className="promo-text">
+            <h2 className="promo-title">
+              Inspired by Rachel Bochner's EP, <span className="highlight">Lovergirl</span>, out everywhere October 11th.
+              Confessions of a Lovergirl encourages you to admit how you really feel about your <span className="italic">crush</span>, your <span className="italic">situationship</span>, the <span className="italic">love of your life</span>, or the <span className="italic">one that got away</span>. 
+            </h2>
+            
+            <p className="promo-description">
+              TO SUPPORT RACHEL, YOU CAN <a href="https://h-r.fans/rachel-lovergirl" className="presave-link">
+                {!countdownOver ? "PRESAVE THE EP HERE" : "LISTEN TO THE EP HERE"} 
+              </a>.
+            </p>
+          </div>
+          
+          <Button className="confession-button" color="primary" variant="contained" onClick={handleClickOpen}>
+            Leave a Confession
           </Button>
+        </header>
 
-          <span className="page-number">{page + 1}</span>
+        <Dialog open={open} onClose={handleClose}>
+          <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Leave a Confession 🎭</DialogTitle>
+          <DialogContent sx={{ backgroundColor: '#f0f0f0' }}>
+            <TextField
+              color="secondary"
+              autoFocus
+              margin="dense"
+              id="recipient"
+              label="Recipient"
+              name="recipient"
+              fullWidth
+              variant="outlined"
+              value={formData.recipient}
+              onChange={handleChange}
+              inputProps={{ maxLength: 20 }}
+            />
+            <TextField
+              color="secondary"
+              margin="dense"
+              id="message"
+              label={`Confession (${formData.message.length}/150)`}
+              name="message"
+              fullWidth
+              multiline
+              rows={4}
+              variant="outlined"
+              value={formData.message}
+              onChange={handleChange}
+              inputProps={{ maxLength: 150 }}
+            />
+            <small>By submitting your confession, you confirm that you are at least 18 years of age and have all necessary rights, licenses, consents, and permissions to post the content. You agree that your submission does not contain any personally identifiable information (such as full names, usernames, addresses, phone numbers, or places of employment) or violate any third-party rights, including intellectual property or privacy rights. Additionally, you affirm that the content is not harmful, offensive, inappropriate, mean-spirited, or in violation of any applicable laws or regulations.</small>
+          </DialogContent>
+          <DialogActions sx={{ backgroundColor: '#f0f0f0' }}>
+            <Button onClick={handleClose} color="primary">Cancel</Button>
+            <Button onClick={handleSubmit} color="primary" variant="contained">Submit</Button>
+          </DialogActions>
+        </Dialog>
 
-          <Button
-            onClick={handleNextPage}
-            color="secondary"
-            variant="text"
-            disabled={!hasNextPage}
-            className={!hasNextPage ? "disabled-button" : ""}
-          >
-            Next
-          </Button>
+        <Dialog open={thankYouDialogOpen} onClose={handleThankYouClose}>
+          <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Thank you for your confession ❤️</DialogTitle>
+          <DialogContent sx={{ backgroundColor: '#f0f0f0' }}>
+            <Typography>
+              Continue your Lovergirl Era by streaming <a href="https://h-r.fans/rachel-lovergirl">here</a>.
+            </Typography>
+          </DialogContent>
+          <DialogActions sx={{ backgroundColor: '#f0f0f0' }}>
+            <Button onClick={handleThankYouClose} color="secondary">Close</Button>
+          </DialogActions>
+        </Dialog>
+
+        <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={handleSnackbarClose}>
+          <Alert onClose={handleSnackbarClose} severity={snackbar.severity}>
+            {snackbar.message}
+          </Alert>
+        </Snackbar>
+
+        <div className="confession-list">
+          {confessions.map((confession, index) => (
+            <Paper
+              elevation={3}
+              className="confession-box"
+              key={index}
+              sx={{
+                padding: '20px',
+                borderRadius: '15px',
+                backgroundImage: `url(${process.env.PUBLIC_URL}/paper.png)`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                minHeight: '200px',
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+              }}
+            >
+              <div className="confession-header">
+                <Typography className="confession-recipient" align="left">
+                  To: {confession.recipient}
+                </Typography>
+                <Typography className="confession-timestamp" align="right">
+                  {new Date(confession.timestamp).toLocaleString()}
+                </Typography>
+              </div>
+              <Divider variant="middle" className="divider" />
+              <div className="confession-body">
+                <Typography variant="body1" className="confession-message">
+                  {confession.message}
+                </Typography>
+              </div>
+            </Paper>
+          ))}
+          <div className="pagination">
+            <Button
+              onClick={handlePrevPage}
+              color="secondary"
+              variant="text"
+              disabled={page === 0}
+              className={page === 0 ? "disabled-button" : ""}
+            >
+              Prev
+            </Button>
+
+            <span className="page-number">{page + 1}</span>
+
+            <Button
+              onClick={handleNextPage}
+              color="secondary"
+              variant="text"
+              disabled={!hasNextPage}
+              className={!hasNextPage ? "disabled-button" : ""}
+            >
+              Next
+            </Button>
+          </div>
         </div>
+
+        {/* Footer */}
+        <footer className="App-footer">
+        <small>
+            By using this service, you agree that the content you submit complies with our terms and conditions. We are not liable for any user-generated content. If you believe any submission is in breach of the terms outlined prior to submission, contains inappropriate material, or violates any rights, please contact us at <a href="mailto:rachelbochnermusic@gmail.com">rachelbochnermusic@gmail.com</a> for prompt review and action.
+            <br></br>
+            Source on <a href="https://github.com/enbytedev/LovergirlConfessions">GitHub</a> | Made with ❤️ by <a href="https://github.com/enbytedev">enbytedev</a>
+        </small>
+        </footer>
       </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
