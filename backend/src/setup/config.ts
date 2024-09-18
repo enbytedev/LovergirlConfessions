@@ -7,6 +7,7 @@ interface GeneralConfiguration {
     debugMode: string;
     logPath: string;
     rateLimit: string;
+    rateLimitConfession: string;
 }
 
 interface DatabaseConfiguration {
@@ -21,7 +22,8 @@ const generalConfiguration = {
     port: process.env.port ?? '8080',
     logPath: process.env.logPath ?? 'logs/',
     debugMode: process.env.debugMode ?? 'false',
-    rateLimit: process.env.rateLimit ?? '60'
+    rateLimit: process.env.rateLimit ?? '60',
+    rateLimitConfession: process.env.rateLimitConfession ?? '5',
 } as GeneralConfiguration;
 export default generalConfiguration;
 

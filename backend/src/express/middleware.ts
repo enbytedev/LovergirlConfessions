@@ -7,4 +7,10 @@ const browserRateLimit = rateLimit({
     message: "Too many requests from this IP, please try again after 10 seconds."
 });
 
-export { browserRateLimit };
+const confessionRateLimit = rateLimit({
+    windowMs: 900000,
+    max: parseInt(config.rateLimitConfession),
+    message: "Too many requests from this IP, please try again after 15 minutes."
+});
+
+export { browserRateLimit, confessionRateLimit };
