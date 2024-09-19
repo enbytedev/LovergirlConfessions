@@ -210,10 +210,10 @@ function App() {
         </Dialog>
 
         <Dialog open={thankYouDialogOpen} onClose={handleThankYouClose}>
-          <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Thank you for your confession ❤️</DialogTitle>
+          <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Welcome to Lovergirl World ❤️</DialogTitle>
           <DialogContent sx={{ backgroundColor: '#f0f0f0' }}>
             <Typography>
-              Continue your Lovergirl Era by streaming <a href="https://h-r.fans/rachel-lovergirl">here</a>.
+              Stream our anthems {!countdownOver ? <a href="https://open.spotify.com/playlist/2G7w8tr36x9pGEfquEey5P?si=c7c4eb4204d84f53&nd=1&dlsi=f7e9a901ca664afd">here</a> : <a href="https://h-r.fans/rachel-lovergirl">here</a>}.
             </Typography>
           </DialogContent>
           <DialogActions sx={{ backgroundColor: '#f0f0f0' }}>
@@ -235,7 +235,7 @@ function App() {
               key={index}
               sx={{
                 padding: '20px',
-                borderRadius: '15px',
+                borderRadius: '0px',
                 backgroundImage: `url(${process.env.PUBLIC_URL}/paper.png)`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
