@@ -21,7 +21,7 @@
 }
 
 .App-logo {
-  height: 150px;
+  height: 130px;
   margin-bottom: 20px;
   filter: drop-shadow(0 0 10px rgba(214, 187, 242, 0.7));
 }
@@ -104,6 +104,12 @@
   line-height: 1.7;
 }
 
+.confession-header,
+.confession-body,
+.confession-message {
+  font-family: 'Patrick Hand SC', cursive !important;
+}
+
 /* Countdown styling */
 .countdown-timer {
   position: absolute;
@@ -128,9 +134,9 @@
 
 .countdown-timer li span {
   display: block;
-  font-size: 2.5rem;
-  padding: 0 10px;
-  min-width: 70px;
+  font-size: 2rem;
+  padding: 0 5px;
+  min-width: 40px;
   color: #350066;
   line-height: 0.2;
 }
@@ -140,7 +146,7 @@
 }
 
 .countdown-timer .colon {
-  font-size: 3rem;
+  font-size: 2rem;
   color: #000000;
   padding-bottom: 30px;
   margin: 10;

@@ -167,12 +167,12 @@ function App() {
           </div>
           
           <Button className="confession-button" color="primary" variant="contained" onClick={handleClickOpen}>
-            Leave a Confession
+            Post a Confession
           </Button>
         </header>
 
         <Dialog open={open} onClose={handleClose}>
-          <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Leave a Confession 🎭</DialogTitle>
+          <DialogTitle sx={{ backgroundColor: '#f0f0f0' }}>Post a Confession 🎭</DialogTitle>
           <DialogContent sx={{ backgroundColor: '#f0f0f0' }}>
             <TextField
               color="secondary"
@@ -230,25 +230,26 @@ function App() {
         <div className="confession-list">
           {confessions.map((confession, index) => (
             <Paper
-              elevation={3}
-              className="confession-box"
-              key={index}
-              sx={{
-                padding: '20px',
-                borderRadius: '0px',
-                backgroundImage: `url(${process.env.PUBLIC_URL}/paper.png)`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                minHeight: '200px',
-                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-              }}
-            >
+                elevation={3}
+                className="confession-box"
+                key={index}
+                sx={{
+                  padding: '20px',
+                  borderRadius: '0px',
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/paper.png)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'bottom',  // Starts the image from the bottom
+                  backgroundRepeat: 'no-repeat', // Prevents repeating the image
+                  minHeight: '200px',
+                  boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                }}
+              >
               <div className="confession-header">
                 <Typography className="confession-recipient" align="left">
                   To: {confession.recipient}
                 </Typography>
                 <Typography className="confession-timestamp" align="right">
-                  {new Date(confession.timestamp).toLocaleString()}
+                  {new Date(confession.timestamp).toLocaleDateString()}
                 </Typography>
               </div>
               <Divider variant="middle" className="divider" />
