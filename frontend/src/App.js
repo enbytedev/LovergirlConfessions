@@ -13,7 +13,7 @@ import Alert from '@mui/material/Alert';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
 
-const API_URL = 'http://localhost:8080/confessions';
+const API_URL = 'https://api.lovergirlconfessions.com/confessions';
 
 const theme = createTheme({
   palette: {
