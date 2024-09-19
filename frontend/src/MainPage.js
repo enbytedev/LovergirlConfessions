@@ -38,6 +38,7 @@ function MainPage() {
   const [timeLeft, setTimeLeft] = useState({});
   const [countdownOver, setCountdownOver] = useState(false);
   const [thankYouDialogOpen, setThankYouDialogOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -53,6 +54,7 @@ function MainPage() {
           seconds: String(Math.floor((difference / 1000) % 60)).padStart(2, '0'),
         };
         setTimeLeft(timeLeft);
+        setLoading(false);
       } else {
         setCountdownOver(true);
       }
@@ -139,7 +141,7 @@ function MainPage() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <header className="App-header">
-          {!countdownOver ? (
+          {!countdownOver && !loading ? (
             <div className="countdown-timer">
               <ul>
                 <li><span>{timeLeft.days || '00'}</span><p>Days</p></li>

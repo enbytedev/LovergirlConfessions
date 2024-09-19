@@ -41,16 +41,16 @@ const ConfessionCard = ({ confession, showShareButton = true }) => {
       }}
     >
       <div className="confession-header">
-        <Typography className="confession-recipient" align="left">
+        <Typography className="confession-recipient" align="left" variant="h6">
           To: {confession.recipient}
         </Typography>
-        <Typography className="confession-timestamp" align="right">
+        <Typography className="confession-timestamp" align="right" variant="h6">
           {new Date(confession.timestamp).toLocaleDateString()}
         </Typography>
       </div>
       <Divider variant="middle" className="divider" />
       <div className="confession-body">
-        <Typography variant="body1" className="confession-message">
+        <Typography variant="h6" className="confession-message">
           {confession.message}
         </Typography>
       </div>

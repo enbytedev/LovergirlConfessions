@@ -104,6 +104,8 @@
   line-height: 1.7;
 }
 
+.confession-timestamp,
+.confession-recipient,
 .confession-header,
 .confession-body,
 .confession-message {
