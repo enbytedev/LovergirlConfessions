@@ -47,6 +47,24 @@ class ConfessionRoutes {
             res.status(500).json({ error: 'Failed to add confession' });
         }
     }
+
+    // GET: Fetch a specific confession by ID
+    async getConfessionById(req: Request, res: Response) {
+        const { id } = req.params; // Extract confessionId from route parameters
+
+        try {
+            const confession = await confessionsDatabase.getConfessionById(parseInt(id, 10));
+            
+            if (confession) {
+                res.status(200).json(confession);
+            } else {
+                res.status(404).json({ error: 'Confession not found' });
+            }
+        } catch (error) {
+            console.error('Error fetching confession by ID:', error);
+            res.status(500).json({ error: 'Failed to fetch confession' });
+        }
+    }
 }
 
 export default ConfessionRoutes;

@@ -13,6 +13,7 @@ export const setRoutes = (app: Express) => {
     // Confessions routes
     router.get('/confessions/:page?', browserRateLimit, Routes.confession.getConfessions);
     router.put("/confessions", confessionRateLimit, Routes.confession.addConfession);
+    router.get('/id/:id', browserRateLimit, Routes.confession.getConfessionById);
         
     router.get("/", browserRateLimit, Routes.basic.home);
     router.get("*", browserRateLimit, Routes.basic.notFound);

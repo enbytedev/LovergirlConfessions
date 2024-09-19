@@ -69,6 +69,29 @@ class ConfessionsDatabase {
         }
     };
 
+    /**
+     * Get a specific confession by its ID.
+     * Fetches the confession from the database using the provided confessionId.
+     */
+        public getConfessionById = async (confessionId: number): Promise<any> => {
+            try {
+                const confession = await connection('Confessions')
+                    .select('confessionId', 'recipient', 'message', 'timestamp')
+                    .where('confessionId', confessionId)
+                    .first();
+                if (confession) {
+                    logger.debug(`Fetched confession with ID ${confessionId}`, 'Database @ Confessions');
+                    return confession;
+                } else {
+                    logger.warn(`Confession with ID ${confessionId} not found`, 'Database @ Confessions');
+                    return null;
+                }
+            } catch (err) {
+                logger.error(`Error fetching confession by ID: ${err}`, 'Database @ Confessions');
+                throw err;
+            }
+        };
+
 }
 
 export default new ConfessionsDatabase();
