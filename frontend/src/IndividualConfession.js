@@ -7,8 +7,8 @@ import ConfessionCard from './ConfessionCard';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 
-// const API_URL = 'https://api.lovergirlconfessions.com/confessions';
-const API_URL = 'http://localhost:8080/id';
+const API_URL = 'https://api.lovergirlconfessions.com/id';
+// const API_URL = 'http://localhost:8080/id';
 
 function IndividualConfession() {
   const { confessionId } = useParams();

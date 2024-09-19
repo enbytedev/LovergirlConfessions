@@ -14,8 +14,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import './App.css';
 import ConfessionCard from './ConfessionCard';
 
-// const API_URL = 'https://api.lovergirlconfessions.com/confessions';
-const API_URL = 'http://localhost:8080/confessions';
+const API_URL = 'https://api.lovergirlconfessions.com/confessions';
+// const API_URL = 'http://localhost:8080/confessions';
 
 const theme = createTheme({
   palette: {
