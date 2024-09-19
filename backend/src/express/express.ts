@@ -25,6 +25,7 @@ function startExpress() {
  */
 function configureExpress() {
     logger.debug("Configuring Express instance...", "configureExpress @ ExpressJS Setup");
+    app.set('trust proxy', 1);
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use('/public', express.static(path.resolve('./public/'))); // Set the public directory to find the static files (e.x. css, scripts, images)
