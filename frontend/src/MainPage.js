@@ -121,7 +121,7 @@ function MainPage() {
         }
       })
       .catch((error) => {
-        setSnackbar({ open: true, message: 'Error submitting confession', severity: 'error' });
+        setSnackbar({ open: true, message: 'Error submitting confession; maximum 1 every 15 minutes.', severity: 'error' });
         console.error('Error submitting confession:', error);
       });
   };
@@ -219,6 +219,11 @@ function MainPage() {
             <Typography>
               Stream our anthems {!countdownOver ? <a href="https://open.spotify.com/playlist/2G7w8tr36x9pGEfquEey5P?si=c7c4eb4204d84f53&nd=1&dlsi=f7e9a901ca664afd">here</a> : <a href="https://h-r.fans/rachel-lovergirl">here</a>}.
             </Typography>
+            {!countdownOver && (
+              <Typography sx={{ mt: 2 }}>
+                NYC based? Join your fellow Lovergirls at Rachel’s EP release show in Brooklyn on October 11th. Tickets <a href="https://dice.fm/partner/rachel-bochner/event/92b9e7-rachel-bochner-the-lovergirl-ep-release-w-scarlet-fiorella-11th-oct-the-sultan-rooftop-brooklyn-tickets?dice_id=4048589&dice_channel=web&dice_tags=organic&dice_campaign=Rachel+Bochner&dice_feature=mio_marketing&_branch_match_id=1366084488100258277&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXz8nMy9ZLyUxO1UvL1Q9KTM5IzXHKT87ISy2yrytKTUstKsrMS49PKsovL04tsnXLBIrlVwAAzWXF%2BD0AAAA%3D">HERE</a>!
+              </Typography>
+            )}
           </DialogContent>
           <DialogActions sx={{ backgroundColor: '#f0f0f0' }}>
             <Button onClick={handleThankYouClose} color="secondary">Close</Button>
