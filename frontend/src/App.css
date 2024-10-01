@@ -75,6 +75,17 @@
   margin: 0 auto;
 }
 
+.confession-list-collection {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0px;
+  row-gap: 0px;
+  padding: 0px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0px;
+}
+
 @media (max-width: 1200px) {
   .confession-list {
     grid-template-columns: repeat(2, 1fr);

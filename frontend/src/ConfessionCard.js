@@ -27,7 +27,7 @@ const ConfessionCard = ({ confession, showShareButton = true }) => {
       className="confession-box"
       sx={{
         padding: '20px',
-        margin: '20px auto',
+        margin: '0px auto',
         maxWidth: '600px',
         width: '300px',
         backgroundImage: `url(${process.env.PUBLIC_URL}/paper.png)`,

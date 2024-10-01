@@ -4,6 +4,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import IndividualConfession from './IndividualConfession';
+import Collection from './Collection';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/:confessionId" element={<IndividualConfession />} />
+          <Route path="/collection" element={<Collection />} />
         </Routes>
       </Router>
     </ThemeProvider>
