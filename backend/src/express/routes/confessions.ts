@@ -65,6 +65,21 @@ class ConfessionRoutes {
             res.status(500).json({ error: 'Failed to fetch confession' });
         }
     }
+    // GET: Fetch all confession IDs as a JSON array
+    async getConfessionIdsAsJson(_req: Request, res: Response) {
+        try {
+            const confessionIds = await confessionsDatabase.getAllConfessionIds();
+            
+            if (!confessionIds || !confessionIds.length) {
+                return res.status(404).json({ error: 'No confessions found' });
+            }
+
+            res.status(200).json(confessionIds);
+        } catch (error) {
+            console.error('Error fetching confession IDs:', error);
+            res.status(500).json({ error: 'Failed to fetch confession IDs' });
+        }
+    }
 }
 
 export default ConfessionRoutes;
